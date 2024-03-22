@@ -2,6 +2,16 @@ import { Request, Response } from 'express';
 import * as walletService from '../services/walletService';
 import { createWalletSchema } from '../utils/validations/walletValidation';
 
+
+export const listWallets = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const wallets = await walletService.listWallets();
+    res.status(200).json(wallets);
+  } catch (error:any) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 export const createWallet = async (req: Request, res: Response): Promise<void> => {
   try {
     await createWalletSchema.validate(req.body);

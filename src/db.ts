@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost:27017/walletDB');
+mongoose.connect(process.env.MONGODB_URL!);
