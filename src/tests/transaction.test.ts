@@ -23,6 +23,8 @@ describe('Test transaction service endpoints', () => {
         expect(Array.isArray(res.body.data)).toBe(true);
         res.body.data.forEach((Transaction: TransactionModel) => {
             expect(Transaction).toHaveProperty('_id');
+            expect(Transaction).toHaveProperty('amount');
+            expect(Transaction).toHaveProperty('type');
         });
     });
 });
