@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'npm run dev:server'",
+    "dev": "nodemon --watch 'src/**/*.ts' --watch 'path/to/html/files/**/*.html' --exec 'npm run dev:server'",
     "dev:server": "ts-node-dev --respawn src/server.ts",
     "build": "tsc && npm run copy-html",
     "copy-html": "copyfiles --up 1 src/docs/*.html dist",
