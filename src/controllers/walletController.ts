@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import * as walletService from '../services/walletService';
+import { amountSchema } from '../utils/validations/walletValidation';
 
 export const listWallets = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -12,6 +13,7 @@ export const listWallets = async (req: Request, res: Response): Promise<void> =>
 
 export const createWallet = async (req: Request, res: Response): Promise<void> => {
   try {
+    await amountSchema.validate(req.body);
     const { amount } = req.body;
     const wallet = await walletService.createWallet(amount);
     res.status(201).json({ success: true, data: wallet });
@@ -22,6 +24,7 @@ export const createWallet = async (req: Request, res: Response): Promise<void> =
 
 export const creditWallet = async (req: Request, res: Response): Promise<void> => {
   try {
+    await amountSchema.validate(req.body);
     const { id } = req.params;
     const { amount } = req.body;
     const wallet = await walletService.creditWallet(id, amount);
@@ -33,6 +36,7 @@ export const creditWallet = async (req: Request, res: Response): Promise<void> =
 
 export const debitWallet = async (req: Request, res: Response): Promise<void> => {
   try {
+    await amountSchema.validate(req.body);
     const { id } = req.params;
     const { amount } = req.body;
     const wallet = await walletService.debitWallet(id, amount);
