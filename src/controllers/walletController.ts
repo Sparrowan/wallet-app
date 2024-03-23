@@ -6,7 +6,7 @@ export const listWallets = async (req: Request, res: Response): Promise<void> =>
     const wallets = await walletService.listWallets();
     res.status(200).json({ success: true, data: wallets });
   } catch (error: any) {
-    res.status(500).json({ success: false, error: 'Failed to fetch wallets' });
+    res.status(400).json({ success: false, error: 'Failed to fetch wallets' });
   }
 };
 

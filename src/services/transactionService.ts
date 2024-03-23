@@ -1,11 +1,13 @@
-import Transaction from '../models/transactionModel';
+import Transaction, { TransactionModel } from '../models/transactionModel';
 
-export const createTransaction = async (
-    walletId: string,
-    amount: number,
-    type: 'credit' | 'debit' | 'initial'
-): Promise<any> => {
-    const transaction = new Transaction({ wallet: walletId, amount, type });
-    await transaction.save();
-    return transaction;
+
+export const listTransactions = async (): Promise<TransactionModel[]> => {
+    try {
+        const transactions = await Transaction.find()
+            .populate('wallet')
+            .sort({ createdAt: -1 });
+        return transactions;
+    } catch (error) {
+        throw new Error('Failed to fetch transactions');
+    }
 };

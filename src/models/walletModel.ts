@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document, PopulatedDoc } from 'mongoose';
-import { Transaction } from './transactionModel';
+import { TransactionModel } from './transactionModel';
 
 export interface WalletModel extends Document {
     amount: number;
     version: number;
     createdAt: Date;
     updatedAt: Date;
-    transactions: PopulatedDoc<Transaction>[];
+    transactions: PopulatedDoc<TransactionModel>[];
 }
 
 const WalletSchema: Schema = new Schema({

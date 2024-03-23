@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface Transaction extends Document {
+export interface TransactionModel extends Document {
     wallet: mongoose.Types.ObjectId;
     amount: number;
     type: 'credit' | 'debit' | 'initial';
@@ -14,4 +14,4 @@ const TransactionSchema: Schema = new Schema({
     type: { type: String, enum: ['credit', 'debit', 'initial'], required: true },
 }, { timestamps: true }); 
 
-export default mongoose.model<Transaction>('Transaction', TransactionSchema,'transactions');
+export default mongoose.model<TransactionModel>('Transaction', TransactionSchema,'transactions');
