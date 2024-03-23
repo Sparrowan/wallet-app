@@ -1,21 +1,22 @@
 import mongoose from 'mongoose';
 import Wallet, { WalletModel } from '../models/walletModel';
 import Transaction from '../models/transactionModel';
-import walletModel from '../models/walletModel';
 
 
 
 export const listWallets = async (): Promise<WalletModel[]> => {
     try {
-        const wallets = await walletModel.find().populate({
-            path: 'transactions',
-            options: { sort: { createdAt: -1 } }
-        }).sort({ createdAt: -1 });
+        const wallets = await Wallet.find()
+            .populate({
+                path: 'transactions',
+                options: { sort: { createdAt: -1 } }
+            })
+            .sort({ createdAt: -1 })
         return wallets;
     } catch (error) {
-        throw error;
+        console.error('Error fetching wallets:', error);
+        throw new Error('Failed to fetch wallets');
     }
-
 };
 
 
@@ -29,11 +30,9 @@ export const createWallet = async (amount: number): Promise<WalletModel> => {
         const wallet = new Wallet({ amount, transactions: [transaction] });
         transaction.wallet = wallet._id;
 
-        // Save transaction and wallet within the same session
         await transaction.save({ session });
         await wallet.save({ session });
 
-        // Populate wallet with transactions
         const populatedWallet = await Wallet.findById(wallet._id)
             .populate({
                 path: 'transactions',
@@ -45,7 +44,6 @@ export const createWallet = async (amount: number): Promise<WalletModel> => {
             throw new Error('Wallet not found');
         }
 
-        // Commit the transaction
         await session.commitTransaction();
         session.endSession();
 
