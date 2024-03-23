@@ -10,4 +10,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/api/wallet', walletRoutes_1.default);
 app.use('/api/transactions', transactionRoutes_1.default);
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/docs/index.html');
+});
 exports.default = app;
