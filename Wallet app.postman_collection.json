@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "c828e9cf-5d80-4fa0-b241-1018b90fe434",
+		"name": "Wallet app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11776725"
+	},
+	"item": [
+		{
+			"name": "Create Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://wallet-app-sepia.vercel.app/api/wallet/create",
+					"protocol": "https",
+					"host": [
+						"wallet-app-sepia",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"wallet",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Debit Wallet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://wallet-app-sepia.vercel.app/api/wallet/65fd41fe1adcfc5890e97c26/debit",
+					"protocol": "https",
+					"host": [
+						"wallet-app-sepia",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"wallet",
+						"65fd41fe1adcfc5890e97c26",
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Credit Wallet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://wallet-app-sepia.vercel.app/api/wallet/65fd41fe1adcfc5890e97c26/credit",
+					"protocol": "https",
+					"host": [
+						"wallet-app-sepia",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"wallet",
+						"65fd41fe1adcfc5890e97c26",
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Wallets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wallet-app-sepia.vercel.app/api/wallet/list",
+					"protocol": "https",
+					"host": [
+						"wallet-app-sepia",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"wallet",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wallet-app-sepia.vercel.app/api/transactions/list",
+					"protocol": "https",
+					"host": [
+						"wallet-app-sepia",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"transactions",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -7,6 +7,11 @@
     <title>Wallet Management System Documentation</title>
     <!-- Include Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        a {
+            color: #4F46E5;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -19,17 +24,49 @@
             <p class="text-lg">The Wallet Management System is a web application designed to facilitate the management
                 of users' wallets, including functionalities such as creating wallets, listing transactions, crediting
                 and debiting wallets, and viewing wallet details.</p>
+            <p class="font-bold mt-4 mb-2">Github link: <a
+                    href="https://github.com/Sparrowan/wallet-app">https://github.com/Sparrowan/wallet-app</a>
+            </p>
+            <p class="font-bold">API endpoints:</p>
+            <ul class="list-disc list-inside">
+                <li>Create Wallet: <a
+                        href="https://wallet-app-sepia.vercel.app/api/wallet/create">https://wallet-app-sepia.vercel.app/api/wallet/create</a>
+                </li>
+                <li>Debit Wallet: <a
+                        href="https://wallet-app-sepia.vercel.app/api/wallet/65fd41fe1adcfc5890e97c26/debit">https://wallet-app-sepia.vercel.app/api/wallet/65fd41fe1adcfc5890e97c26/debit</a>
+                </li>
+                <li>Credit Wallet: <a
+                        href="https://wallet-app-sepia.vercel.app/api/wallet/65fd41fe1adcfc5890e97c26/credit">https://wallet-app-sepia.vercel.app/api/wallet/65fd41fe1adcfc5890e97c26/credit</a>
+                </li>
+                <li>List Wallets: <a
+                        href="https://wallet-app-sepia.vercel.app/api/wallet/list">https://wallet-app-sepia.vercel.app/api/wallet/list</a>
+                </li>
+                <li>List Transactions: <a
+                        href="https://wallet-app-sepia.vercel.app/api/transactions/list">https://wallet-app-sepia.vercel.app/api/transactions/list</a>
+                </li>
+            </ul>
         </section>
 
         <!-- Technical Decisions Section -->
         <section class="mb-8">
             <h2 class="text-2xl font-bold mb-2">Technical Decisions</h2>
             <ul class="list-disc list-inside">
-                <li>Backend Framework: Node.js with Express.js</li>
+                <li>Backend Framework: Node.js with Express.js and Typescript</li>
                 <li>Database: MongoDB with Mongoose</li>
                 <li>API Design: RESTful Architecture</li>
                 <li>Validation: Yup Schema Validation</li>
-                <li>Frontend Styling: Tailwind CSS</li>
+                <li>Tests: Jest</li>
+                <li>Doc Styling: Tailwind CSS</li>
+                <li>Deployment: Vercel</li>
+            </ul>
+            <p class="font-bold mt-4 mb-2">To prevent financial exploits like race conditions, deadlocks, and unstable
+                balances,
+                the following measures have been implemented:</p>
+            <ul class="list-disc list-inside">
+                <li>Implemented MongoDB Transactions: Credit and debit operations are wrapped in MongoDB transactions to
+                    ensure atomicity.</li>
+                <li>Implemented Optimistic Locking: A version field in the Wallet model is used for optimistic locking.
+                </li>
             </ul>
         </section>
 
@@ -39,19 +76,10 @@
             <p class="text-lg">Details the architecture of the backend system, including routing, middleware, database
                 schema, and data access logic.</p>
         </section>
-
-        <!-- Frontend Implementation Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-bold mb-2">Frontend Implementation</h2>
-            <p class="text-lg">Explains the frontend implementation using HTML, CSS, and JavaScript, with a focus on
-                responsive design and user interaction.</p>
-        </section>
-
         <!-- Conclusion Section -->
         <section>
             <h2 class="text-2xl font-bold mb-2">Conclusion</h2>
-            <p class="text-lg">Summarizes the key points of the technical documentation and highlights future
-                considerations for system enhancements and maintenance.</p>
+            <p class="text-lg">Thank you.</p>
         </section>
     </div>
 </body>
